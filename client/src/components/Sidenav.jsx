@@ -1,5 +1,4 @@
 import SideNav, {
-  Toggle,
   NavItem,
   NavIcon,
   NavText

@@ -19,6 +19,26 @@ router.get('/', (req, res) => {
 
 });
 
+router.post('/save', (req, res) => {
+    const data = req.body;
+
+    const newTestTicket = new TestTicket(data);
+
+    newTestTicket.save((error) => {
+        if(error){
+            res.status(500).json({msg: "sorry, internal server error"});
+            return;
+        }
+        res.json({
+            msg: "Your data has been saved! "
+        }); 
+        
+    })
+
+
+
+});
+
 router.get('/name', (req, res) => {
     const data = {
         username: 'jackyyy chan',

@@ -1,4 +1,3 @@
-import Content from "../components/Content";
 export default function Home() {
   const userName = "Alex";
   return (
