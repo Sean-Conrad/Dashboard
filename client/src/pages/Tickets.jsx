@@ -96,7 +96,7 @@ export default function Tickets() {
         
       <div className="wrapper">
         <div className="col-sm-6 body-text"><h1>Hello there</h1></div>
-            <form onSubmit={submit}>
+            <form className="card" onSubmit={submit}>
                 <div className="container-fluid row">
                     <div className="form-input">
                         <input type="text" 
