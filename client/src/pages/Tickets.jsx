@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Tickets() {
 
     const [ticket, setTicket] = useState({
         title: '',
-        body: ''
+        body: '',
+        posts: []
     });
 
+    useEffect(()=> {
+        getTestTicket();
+        }, [])
+
+    function getTestTicket(){
+          axios.get('/api')
+           .then((response)=> {
+                const data = response.data;
+                setTicket(()=> {
+                    return{
+                        posts: data
+                    }
+                })
+                console.log("Data has been recieved");
+           })
+           .catch(()=> {
+                alert('Error retrieving data.'); 
+           })
+    }
 
     function handleChange(event){
         const {name, value} = event.target;
@@ -47,6 +67,22 @@ export default function Tickets() {
             title: '',
             body: ''
         });
+        getTestTicket();
+    }
+
+    function displayTickets(posts){
+        // !posts may not work to detect empty
+         if(!posts){
+            return null;
+         }
+         return(
+            posts.map((post, index) => (
+                <div key= {index}>
+                    <h3>{post.title}</h3>
+                    <p>{post.body}</p>
+                </div>
+         )));
+         
     }
 
     return (
@@ -73,6 +109,11 @@ export default function Tickets() {
                         </textarea>
                     </div>
                     <button>Submit</button>
+                </div>
+            </form>
+            <form>
+                <div className="tickets">
+                    {displayTickets(ticket.posts)}
                 </div>
             </form>
         </div>
