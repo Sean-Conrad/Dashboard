@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Ticks from "../components/Ticks";
 
 export default function Tickets() {
 
@@ -12,6 +13,16 @@ export default function Tickets() {
     useEffect(()=> {
         getTestTicket();
         }, [])
+
+    function createCard(ticket){
+        return(
+        <Ticks
+            key={ticket.id}
+            title={ticket.title}
+            body={ticket.body}
+        />
+      )
+    }
 
     function getTestTicket(){
           axios.get('/api')
@@ -76,12 +87,8 @@ export default function Tickets() {
             return null;
          }
          return(
-            posts.map((post, index) => (
-                <div key= {index}>
-                    <h3>{post.title}</h3>
-                    <p>{post.body}</p>
-                </div>
-         )));
+            posts.map(createCard)
+         );
          
     }
 
