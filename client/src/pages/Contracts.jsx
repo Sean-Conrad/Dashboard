@@ -1,6 +1,11 @@
 import contractReqs from "../contractReqs";
 import Requests from "../components/Requests";
 
+
+
+
+export default function Contracts() {
+
 function createCard(request) {
   return (
     <Requests
@@ -16,7 +21,7 @@ function createCard(request) {
   );
 }
 
-export default function Contracts() {
+
   return (
     <div className="wrapper">
       <div className="container-fluid row">

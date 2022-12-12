@@ -95,7 +95,7 @@ export default function Tickets() {
     return (
         
       <div className="wrapper">
-        <div className="col-sm-6 body-text"><h1>Hello there</h1></div>
+        <div className="col-sm-6 body-text"><h1>Create A Ticket</h1></div>
             <form className="card" onSubmit={submit}>
                 <div className="container-fluid row">
                     <div className="form-input">
@@ -118,6 +118,7 @@ export default function Tickets() {
                     <button>Submit</button>
                 </div>
             </form>
+            <h1 className="body-text">Active Tickets</h1>
             <form>
                 <div className="tickets">
                     {displayTickets(ticket.posts)}
