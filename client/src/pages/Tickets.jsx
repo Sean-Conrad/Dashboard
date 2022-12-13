@@ -25,7 +25,7 @@ export default function Tickets() {
     }
 
     function getTestTicket(){
-          axios.get('/api')
+          axios.get('/api/getTickets')
            .then((response)=> {
                 const data = response.data;
                 setTicket(()=> {

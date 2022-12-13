@@ -21,7 +21,7 @@ function Employs(props) {
         <Card.Text>Languages: {props.languages}</Card.Text>
         <Card.Text>Expected Pay: {props.expectedPay}</Card.Text>
         <Card.Text>Currently Employed: {props.currentlyEmployed}</Card.Text>
-        <Card.Text>Right To Work: {props.rightToWork}</Card.Text>
+        <Card.Text>Right To Work: {props.canWorkInUS}</Card.Text>
         <Card.Text>Worked With Us Before: {props.workedWithUsBefore}</Card.Text>
         <Card.Text>Can Lift Above Fifty: {props.canLiftAboveFifty}</Card.Text>
         <Card.Text>Liscence And Vehicle: {props.liscenceAndVehicle}</Card.Text>

@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const TestTicket = require('../models/tickets');
-
+const TestContract = require('../models/contracts');
+const TestCareer = require('../models/careers');
 //Routes
-router.get('/', (req, res) => {
-
-
+router.get('/getTickets', (req, res) => {
     TestTicket.find({ })
         .then((data) => {
             console.log('Data: ', data);
@@ -15,8 +14,30 @@ router.get('/', (req, res) => {
             console.log('error: ', error);
 
         })
+});
 
+router.get('/getContracts', (req, res) => {
+    TestContract.find({ })
+        .then((data) => {
+            console.log('Data: ', data);
+            res.json(data);
+        })
+        .catch((error) => {
+            console.log('error: ', error);
 
+        })
+});
+
+router.get('/getCareers', (req, res) => {
+    TestCareer.find({ })
+        .then((data) => {
+            console.log('Data: ', data);
+            res.json(data);
+        })
+        .catch((error) => {
+            console.log('error: ', error);
+
+        })
 });
 
 router.post('/save', (req, res) => {
@@ -34,9 +55,6 @@ router.post('/save', (req, res) => {
         }); 
         
     })
-
-
-
 });
 
 router.get('/name', (req, res) => {

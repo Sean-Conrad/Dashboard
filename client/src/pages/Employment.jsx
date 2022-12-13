@@ -1,39 +1,96 @@
-import employReqs from "../employReqs";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 import Employs from "../components/Employs";
 
-function createCard(employs) {
+
+export default function Careers() {
+
+  const [career, setCareer] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    reasonsNotAble: '',
+    workExperience: '',
+    certifications: '',
+    medicalConditions: '',
+    languages: '',
+    expectedPay: '',
+    currentlyEmployed: '',
+    canWorkInUS: '',
+    workedWithUsBefore: '',
+    canLiftAboveFifty: '',
+    liscenceAndVehicle: '',
+    willingToTravel: '',
+    posts: []
+  })
+
+  useEffect(() => {
+    getTestCareer();
+  }, [])
+
+function createCard(career) {
   return (
     <Employs
-      key={employs.id}
-      firstName={employs.firstName}
-      lastName={employs.lastName}
-      email={employs.email}
-      phone={employs.phone}
-      address={employs.address}
-      city={employs.city}
-      state={employs.state}
-      postalCode={employs.postalCode}
-      reasonsNotAble={employs.reasonsNotAble}
-      workExperience={employs.workExperience}
-      certifications={employs.certifications}
-      medicalConditions={employs.medicalConditions}
-      languages={employs.languages}
-      expectedPay={employs.expectedPay}
-      currentlyEmployed={employs.currentlyEmployed}
-      workedWithUsBefore={employs.workedWithUsBefore}
-      canLiftAboveFifty={employs.workedWithUsBefore}
-      liscenceAndVehicle={employs.workedWithUsBefore}
-      willingToTravel={employs.workedWithUsBefore}
-      date={employs.date}
+      key={career.id}
+      firstName={career.firstName}
+      lastName={career.lastName}
+      email={career.email}
+      phone={career.phone}
+      address={career.address}
+      city={career.city}
+      state={career.state}
+      postalCode={career.postalCode}
+      reasonsNotAble={career.reasonsNotAble}
+      workExperience={career.workExperience}
+      certifications={career.certifications}
+      medicalConditions={career.medicalConditions}
+      languages={career.languages}
+      expectedPay={career.expectedPay}
+      currentlyEmployed={career.currentlyEmployed}
+      canWorkInUS={career.canWorkInUS}
+      workedWithUsBefore={career.workedWithUsBefore}
+      canLiftAboveFifty={career.canLiftAboveFifty}
+      liscenceAndVehicle={career.liscenceAndVehicle}
+      willingToTravel={career.willingToTravel}
     />
   );
 }
 
-export default function Employment() {
+function getTestCareer(){
+  axios.get('/api/getCareers')
+    .then((response)=> {
+      const data = response.data;
+      setCareer(()=> {
+          return{
+              posts: data
+          }
+      })
+      console.log("Data has been recieved");
+    })
+    .catch(()=> {
+        alert('Error retrieving data.'); 
+    })
+}
+
+function displayCareers(posts){
+  if(!posts){
+    return null;
+ }
+ return(
+    posts.map(createCard)
+ );
+}
+
+
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div class="col-sm-6">{employReqs.map(createCard)}</div>
+        <div class="tickets">{displayCareers(career.posts)}</div>
       </div>
     </div>
   );
