@@ -47,3 +47,12 @@ p {
   background: #284b82 !important;
   position: fixed !important;
 }
+
+.form-login {
+  max-width: 18vw;
+  margin: 40px auto;
+  padding: 20px;
+  color: white;
+  border-radius: 4px;
+  margin-top: 20%;
+}

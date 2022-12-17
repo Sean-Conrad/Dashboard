@@ -9,6 +9,10 @@ export default function Topnav() {
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#features">Features</Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/signup">SignUp</Nav.Link>
+
+
         </Nav>
       </Container>
     </Navbar>
