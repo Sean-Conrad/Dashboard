@@ -17,7 +17,7 @@ export default function App() {
         <Sidenav />
         <Routes>
           <Route path="/login" element={<Login />} />   
-          <Route path="/signup" element={<Signup />} />         
+          <Route path="/signup" element={<Signup />} /> 
           <Route path="/home" element={<Home />} />
           <Route path="/tickets" element={<Tickets />} />
           <Route path="/contracts" element={<Contracts />} />
