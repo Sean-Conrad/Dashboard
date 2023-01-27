@@ -19,9 +19,9 @@ export default function Topnav() {
         <Nav className="me-auto">
         
           { !user && (
-            <div>          
-              <Nav.Link href="/login">Login</Nav.Link>
-              <Nav.Link href="/signup">SignUp</Nav.Link>
+            <div >          
+              <Nav.Link className="no-block" href="/login">Login</Nav.Link>
+              <Nav.Link className="no-block" href="/signup">SignUp</Nav.Link>
             </div>
           )}
 

@@ -28,10 +28,17 @@ p {
   padding-top: 5vh;
 }
 
+.wide{
+  width: 100vw;
+}
+
 .container-fluid {
   justify-content: center;
 }
 
+.container-small{
+  width: 50vw;
+}
 .topNav {
   margin-bottom: 95vh;
   background-color: #284b82 !important;
@@ -55,4 +62,9 @@ p {
   color: white;
   border-radius: 4px;
   margin-top: 20%;
+}
+
+/* remove me */
+.no-block{ 
+  display:inline !important;
 }
