@@ -2,11 +2,11 @@ const express = require('express');
 const TestTicket = require('../models/tickets');
 const TestContract = require('../models/contracts');
 const TestCareer = require('../models/careers');
-// const requireAuth = require('../middleware/requireAuth');
+const requireAuth = require('../middleware/requireAuth');
 const router = express.Router();
 
 //Require Auth for all routes
-// router.use(requireAuth)
+router.use(requireAuth)
 
 //Routes
 router.get('/getTickets', (req, res) => {

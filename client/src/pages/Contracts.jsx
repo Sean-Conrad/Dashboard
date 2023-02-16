@@ -64,7 +64,7 @@ function displayContracts(posts){
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div class="tickets">{displayContracts(contract.posts)}</div>
+        <div>{displayContracts(contract.posts)}</div>
       </div>
     </div>
   );

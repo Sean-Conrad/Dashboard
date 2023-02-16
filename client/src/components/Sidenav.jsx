@@ -25,12 +25,6 @@ function Sidenav() {
             </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
-          <NavItem eventKey="Tickets">
-            <NavIcon>
-              <i className="fa-solid fa-ticket" style={{ fontSize: "1.5em" }} />
-            </NavIcon>
-            <NavText>Tickets</NavText>
-          </NavItem>
           <NavItem eventKey="Contracts">
             <NavIcon>
               <i
