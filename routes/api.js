@@ -6,7 +6,7 @@ const requireAuth = require('../middleware/requireAuth');
 const router = express.Router();
 
 //Require Auth for all routes
-router.use(requireAuth)
+//router.use(requireAuth)
 
 //Routes
 router.get('/getTickets', (req, res) => {
