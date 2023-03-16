@@ -1,20 +1,18 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-function Requests(props) {
+const Requests = ({contract}) => {
   return (
     <Card style={{ width: "40rem", margin: "20px" }}>
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
+        <Card.Title>{contract.name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          Subject: {props.subject}
+          Subject: {contract.subject}
         </Card.Subtitle>
-        <Card.Text>Message: {props.message}</Card.Text>
-        <Card.Text>Address: {props.address}</Card.Text>
-        <Card.Text>Phone: {props.phone}</Card.Text>
-        <Card.Text>Email: {props.email}</Card.Text>
-
-
+        <Card.Text>Message: {contract.message}</Card.Text>
+        <Card.Text>Address: {contract.address}</Card.Text>
+        <Card.Text>Phone: {contract.phone}</Card.Text>
+        <Card.Text>Email: {contract.email}</Card.Text>
         
         <Card.Link href="#">Card Link</Card.Link>
         <Card.Link href="#">Another Link</Card.Link>

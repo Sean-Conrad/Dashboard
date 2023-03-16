@@ -18,7 +18,7 @@ function Sidenav() {
         className="sideNav"
       >
         <SideNav.Toggle />
-        <SideNav.Nav defaultSelected="Home">
+        <SideNav.Nav defaultSelected="">
           <NavItem eventKey="Home">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.5em" }} />

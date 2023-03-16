@@ -1,5 +1,7 @@
 import "./styles.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup"; 
 import Topnav from "./components/Topnav";
@@ -9,17 +11,20 @@ import Home from "./pages/Home";
 import Employment from "./pages/Employment";
 
 export default function App() {
+  const { user } = useAuthContext()
+
   return (
     <div>
       <Topnav />
       <Router>
         <Sidenav />
         <Routes>
-          <Route path="/login" element={<Login />} />   
-          <Route path="/signup" element={<Signup />} /> 
-          <Route path="/home" element={<Home />} />
-          <Route path="/contracts" element={<Contracts />} />
-          <Route path="/employment" element={<Employment />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+          <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/contracts" element={user? <Contracts/> : <Navigate to="/login" />} />
+          <Route path="/employment" element={user? <Employment/> : <Navigate to="/login" />} />
         </Routes>
       </Router>
     </div>

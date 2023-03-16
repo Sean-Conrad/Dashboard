@@ -1,70 +1,44 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, {useEffect} from "react";
 import Requests from "../components/Requests";
+import { useContractsContext } from "../hooks/useContractsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 export default function Contracts() {
 
-  const [contract, setContract] = useState({
-    name: '',
-    address: '',
-    phone: '',
-    email: '',
-    date: '',
-    subject: '',
-    message: '',
-    posts: []
-  })
+  const {contracts, dispatch} = useContractsContext() 
+  const {user} = useAuthContext()
 
   useEffect(() => {
-    getTestContract();
-  }, [])
-
-function createCard(contract) {
-  return (
-    <Requests
-      key={contract.id}
-      name={contract.name}
-      address={contract.address}
-      phone={contract.phone}
-      email={contract.email}
-      date={contract.date}
-      subject={contract.subject}
-      message={contract.message}
-    />
-  );
-}
-
-function getTestContract(){
-  axios.get('/api/getContracts')
-    .then((response)=> {
-      const data = response.data;
-      setContract(()=> {
-          return{
-              posts: data
-          }
+    const getTestContract = async () => {
+      const response = await fetch('/api/getContracts', {
+        headers: {
+          'Authorization' : `Bearer ${user.token}`
+        }
       })
-      console.log("Data has been recieved");
-    })
-    .catch(()=> {
-        alert('Error retrieving data.'); 
-    })
-}
+      const json = await response.json()
 
-function displayContracts(posts){
-  if(!posts){
-    return null;
- }
- return(
-    posts.map(createCard)
- );
-}
+      if (response.ok) {
+        dispatch({type: 'SET_CONTRACTS', payload: json})
+      }
+    }
+    if (user) {
+      getTestContract()
+    } 
+
+    
+  }, [dispatch, user])
+
+
 
 
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div>{displayContracts(contract.posts)}</div>
+        <div>{contracts && contracts.map((contract) => (
+          <Requests key={contracts._id} contract={contract}/>
+        ))}
+        </div>
       </div>
     </div>
   );
