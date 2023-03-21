@@ -34,10 +34,11 @@ p {
 
 .container-fluid {
   justify-content: center;
+  text-align: center;
 }
 
 .container-small{
-  width: 50vw;
+  padding: 5px 5px;
 }
 .topNav {
   margin-bottom: 95vh;

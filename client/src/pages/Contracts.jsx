@@ -25,17 +25,13 @@ export default function Contracts() {
     if (user) {
       getTestContract()
     } 
-
-    
   }, [dispatch, user])
-
-
 
 
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div>{contracts && contracts.map((contract) => (
+        <div>{contracts && [...contracts].reverse().map((contract) => (
           <Requests key={contracts._id} contract={contract}/>
         ))}
         </div>

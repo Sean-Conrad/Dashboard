@@ -2,8 +2,10 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 const Employs = ({career}) => {
+  const d = new Date(Number(career.date))
+  const fullDate = d.getMonth()+1 + "/" + d.getDate() + "/" + d.getFullYear()
   return (
-    <Card style={{ width: "40rem", margin: "20px" }}>
+    <Card style={{ width: "40rem", margin: "30px auto" }}>
       <Card.Body>
         <Card.Title>
           {career.firstName} {career.lastName}
@@ -26,7 +28,7 @@ const Employs = ({career}) => {
         <Card.Text>Can Lift Above Fifty: {career.canLiftAboveFifty}</Card.Text>
         <Card.Text>Liscence And Vehicle: {career.liscenceAndVehicle}</Card.Text>
         <Card.Text>Willing To Travel: {career.willingToTravel}</Card.Text>
-        <Card.Text>Date: {career.date}</Card.Text>
+        <Card.Text>Date: {fullDate}</Card.Text>
 
         <Card.Link href="#">Card Link</Card.Link>
         <Card.Link href="#">Another Link</Card.Link>

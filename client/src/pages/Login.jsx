@@ -17,18 +17,25 @@ const Login = () => {
       <div className="container-fluid row">
         <form className="form-login" onSubmit={handleSubmit}>
             <h3> Log In</h3>
-            <label>Email: </label>
-            <input 
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email} >
-            </input>
-            <label>Password: </label>
-            <input 
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password} >
-            </input>
+            <div className="container-small row">
+              <label className="col-md-4">Email: </label>
+              <input 
+                  className="col-md-6"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email} >
+              </input>
+            </div>
+            <div className="container-small row">
+            <label className="col-md-4">Password: </label>
+              <input 
+                  className="col-md-6"
+                  type="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password} >
+              </input>
+            </div>
+ 
             <button disabled = {isLoading}>Log In</button>
             {error && <div className="error">{error}</div>}
         </form>

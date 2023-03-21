@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Employs from "../components/Employs";
 import { useCareersContext } from "../hooks/useCareersContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -34,7 +34,7 @@ export default function Careers() {
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div>{careers && careers.map((career) => (
+        <div>{careers && [...careers].reverse().map((career) => (
             <Employs key={careers._id} career={career}/>
           ))}
           </div>
