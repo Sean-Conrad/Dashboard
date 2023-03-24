@@ -18,18 +18,12 @@ function Sidenav() {
         className="sideNav"
       >
         <SideNav.Toggle />
-        <SideNav.Nav defaultSelected="Home">
+        <SideNav.Nav defaultSelected="">
           <NavItem eventKey="Home">
             <NavIcon>
               <i className="fa fa-fw fa-home" style={{ fontSize: "1.5em" }} />
             </NavIcon>
             <NavText>Home</NavText>
-          </NavItem>
-          <NavItem eventKey="Tickets">
-            <NavIcon>
-              <i className="fa-solid fa-ticket" style={{ fontSize: "1.5em" }} />
-            </NavIcon>
-            <NavText>Tickets</NavText>
           </NavItem>
           <NavItem eventKey="Contracts">
             <NavIcon>

@@ -1,32 +1,34 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-function Employs(props) {
+const Employs = ({career}) => {
+  const d = new Date(Number(career.date))
+  const fullDate = d.getMonth()+1 + "/" + d.getDate() + "/" + d.getFullYear()
   return (
-    <Card style={{ width: "40rem", margin: "20px" }}>
+    <Card style={{ width: "40rem", margin: "30px auto" }}>
       <Card.Body>
         <Card.Title>
-          {props.firstName} {props.lastName}
+          {career.firstName} {career.lastName}
         </Card.Title>
 
-        <Card.Text>Email: {props.email}</Card.Text>
-        <Card.Text>Phone: {props.phone}</Card.Text>
+        <Card.Text>Email: {career.email}</Card.Text>
+        <Card.Text>Phone: {career.phone}</Card.Text>
         <Card.Text>
-          Address: {props.address} {props.city} {props.state} {props.postalCode}
+          Address: {career.address} {career.city} {career.state} {career.postalCode}
         </Card.Text>
-        <Card.Text>Reasons Not Able: {props.reasonsNotAble}</Card.Text>
-        <Card.Text>Work Experience: {props.workExperience}</Card.Text>
-        <Card.Text>Certifications: {props.certifications}</Card.Text>
-        <Card.Text>Medical Conditions: {props.medicalConditions}</Card.Text>
-        <Card.Text>Languages: {props.languages}</Card.Text>
-        <Card.Text>Expected Pay: {props.expectedPay}</Card.Text>
-        <Card.Text>Currently Employed: {props.currentlyEmployed}</Card.Text>
-        <Card.Text>Right To Work: {props.canWorkInUS}</Card.Text>
-        <Card.Text>Worked With Us Before: {props.workedWithUsBefore}</Card.Text>
-        <Card.Text>Can Lift Above Fifty: {props.canLiftAboveFifty}</Card.Text>
-        <Card.Text>Liscence And Vehicle: {props.liscenceAndVehicle}</Card.Text>
-        <Card.Text>Willing To Travel: {props.willingToTravel}</Card.Text>
-        <Card.Text>Date: {props.date}</Card.Text>
+        <Card.Text>Reasons Not Able: {career.reasonsNotAble}</Card.Text>
+        <Card.Text>Work Experience: {career.workExperience}</Card.Text>
+        <Card.Text>Certifications: {career.certifications}</Card.Text>
+        <Card.Text>Medical Conditions: {career.medicalConditions}</Card.Text>
+        <Card.Text>Languages: {career.languages}</Card.Text>
+        <Card.Text>Expected Pay: {career.expectedPay}</Card.Text>
+        <Card.Text>Currently Employed: {career.currentlyEmployed}</Card.Text>
+        <Card.Text>Right To Work: {career.canWorkInUS}</Card.Text>
+        <Card.Text>Worked With Us Before: {career.workedWithUsBefore}</Card.Text>
+        <Card.Text>Can Lift Above Fifty: {career.canLiftAboveFifty}</Card.Text>
+        <Card.Text>Liscence And Vehicle: {career.liscenceAndVehicle}</Card.Text>
+        <Card.Text>Willing To Travel: {career.willingToTravel}</Card.Text>
+        <Card.Text>Date: {fullDate}</Card.Text>
 
         <Card.Link href="#">Card Link</Card.Link>
         <Card.Link href="#">Another Link</Card.Link>

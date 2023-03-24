@@ -1,96 +1,43 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, {useEffect} from "react";
 import Employs from "../components/Employs";
+import { useCareersContext } from "../hooks/useCareersContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 export default function Careers() {
 
-  const [career, setCareer] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    postalCode: '',
-    reasonsNotAble: '',
-    workExperience: '',
-    certifications: '',
-    medicalConditions: '',
-    languages: '',
-    expectedPay: '',
-    currentlyEmployed: '',
-    canWorkInUS: '',
-    workedWithUsBefore: '',
-    canLiftAboveFifty: '',
-    liscenceAndVehicle: '',
-    willingToTravel: '',
-    posts: []
-  })
+  const {careers, dispatch} = useCareersContext() 
+  const {user} = useAuthContext()
 
   useEffect(() => {
-    getTestCareer();
-  }, [])
-
-function createCard(career) {
-  return (
-    <Employs
-      key={career.id}
-      firstName={career.firstName}
-      lastName={career.lastName}
-      email={career.email}
-      phone={career.phone}
-      address={career.address}
-      city={career.city}
-      state={career.state}
-      postalCode={career.postalCode}
-      reasonsNotAble={career.reasonsNotAble}
-      workExperience={career.workExperience}
-      certifications={career.certifications}
-      medicalConditions={career.medicalConditions}
-      languages={career.languages}
-      expectedPay={career.expectedPay}
-      currentlyEmployed={career.currentlyEmployed}
-      canWorkInUS={career.canWorkInUS}
-      workedWithUsBefore={career.workedWithUsBefore}
-      canLiftAboveFifty={career.canLiftAboveFifty}
-      liscenceAndVehicle={career.liscenceAndVehicle}
-      willingToTravel={career.willingToTravel}
-    />
-  );
-}
-
-function getTestCareer(){
-  axios.get('/api/getCareers')
-    .then((response)=> {
-      const data = response.data;
-      setCareer(()=> {
-          return{
-              posts: data
-          }
+    const getTestCareer = async () => {
+      const response = await fetch('/api/getCareers', {
+        headers: {
+          'Authorization' : `Bearer ${user.token}`
+        }
       })
-      console.log("Data has been recieved");
-    })
-    .catch(()=> {
-        alert('Error retrieving data.'); 
-    })
-}
+      const json = await response.json()
 
-function displayCareers(posts){
-  if(!posts){
-    return null;
- }
- return(
-    posts.map(createCard)
- );
-}
+      if (response.ok) {
+        dispatch({type: 'SET_CAREERS', payload: json})
+      }
+    }
+    if (user) {
+      getTestCareer()
+    } 
+
+    
+  }, [dispatch, user])
+
 
 
   return (
     <div className="wrapper">
       <div className="container-fluid row">
-        <div class="tickets">{displayCareers(career.posts)}</div>
+        <div>{careers && [...careers].reverse().map((career) => (
+            <Employs key={careers._id} career={career}/>
+          ))}
+          </div>
       </div>
     </div>
   );
