@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "client": "cd client && npm start",
-    "dev": "concurrently -n 'server,client' -c 'green,blue' \"nodemon server.js\" \"npm run client\""
+    "frontend": "cd ../frontend && npm start",
+    "dev": "concurrently -n 'server,frontend' -c 'green,blue' \"nodemon server.js\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
